@@ -1,7 +1,21 @@
 import React,{Component} from 'react';
 import { MDBContainer} from "mdbreact";
 import Player from './components/Player'
+import Particles from 'react-particles-js';
 import "./App.css";
+
+const particlesopt = {
+                particles: {
+                  number:{
+                    value:55,
+                    density:{
+                      enable: true,
+                      value_area : 600
+                    }
+                  }
+                  
+                }
+              }
 class App extends Component {
   constructor(props){
     super(props)
@@ -83,6 +97,9 @@ class App extends Component {
     let status = this.state.player ? (this.state.winner ? (this.state.winner==="draw" ? <h2 class="draw">Draw....</h2> :<h2 class="win">winner is {this.state.winner}</h2>):<h2> Next player is {this.state.player}</h2>):<Player player = {(e)=> this.setPlayer(e)}/>
   return (
     <MDBContainer>
+      <Particles className="particles"
+              params={particlesopt}
+            />
       <h1>Tic Tac Toe App</h1>
       {status}
       <div className="board">
